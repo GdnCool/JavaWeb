@@ -5,7 +5,7 @@
         <br>
         目标层次&#160;<Input v-model="formItem.goal" placeholder="目标层次" style="width: 300px" />
         <br>
-        <i-button type="button">确定</i-button>
+        <MenuItem :name="vHasPlan.name">健身计划</MenuItem>
     </div>
 </template>
 <script>
@@ -20,14 +20,26 @@ export default {
       }
     },
     methods: {
-      register() {
+      confirm() {
         this.axios.post('/user/insertGoal', {
             goal_type: this.formItem.goal_type,
             goal: this.formItem.goal
+            
           })
           .then(res => console.log(res))
           .catch(err => console.log(err));
+      },
+    watch: {
+     fHasPlan() {
+        if (this.$store.getters.getPlan) {
+          this.vHasPlan.name = "Plan";
+        }
+        }
       }
+
+      
+        
+      
     }
   }
 </script>
