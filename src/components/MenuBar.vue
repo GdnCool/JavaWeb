@@ -53,7 +53,7 @@
       },
       fHasPlan() {
         if (this.$store.getters.getPlan) {
-          this.vHasPlan.name = "Plan";
+          this.vHasPlan.name = "Target";
         }
       },
       routerPath() {
